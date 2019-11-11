@@ -3,6 +3,7 @@
 # --- Ввод параметров подключения ---
 
 Param (
+    [Parameter()][string]$comName = "",
     [Parameter()][string]$server1c = "localhost",
     [Parameter()][string]$serverSql = "localhost",
     [Parameter()][string]$agentPort = "1550",
@@ -22,7 +23,7 @@ $baseFound = $false
 # --- Рабочая часть скрипта ---
 
 try {
-    $V83Com=New-Object -ComObject "V83.ComConnector"
+    $V83Com=New-Object -ComObject comName
     $ServerAgent = $V83Com.ConnectAgent($SrvAddr)
 } catch {
     throw $_.Exception.Message
