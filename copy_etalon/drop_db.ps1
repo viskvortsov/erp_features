@@ -23,7 +23,7 @@ $baseFound = $false
 # --- Рабочая часть скрипта ---
 
 try {
-    $V83Com=New-Object -ComObject comName
+    $V83Com=New-Object -ComObject ($comName)
     $ServerAgent = $V83Com.ConnectAgent($SrvAddr)
 } catch {
     throw $_.Exception.Message
